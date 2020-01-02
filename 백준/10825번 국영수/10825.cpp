@@ -34,7 +34,6 @@ int main(void) {
 	Student temp;
 
 	cin >> n;
-
 	for (int i = 0; i < n; i++) {
 		cin >> str >> k >> e >> m;
 		temp.name = str;
