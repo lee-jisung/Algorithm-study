@@ -11,11 +11,11 @@
 - one dash
  - abcd
 
-- bold **character**
+- bold **character** (**로 감쌈)
 
-> abcd
+> abcd ( 앞에 > 사용)
 
-- code
+- code ( '''로 묶음)
 ``` javascript
  alert("hello");
  ```
@@ -28,7 +28,7 @@
 
     - 
 
-  - **table**
+  - **table** ( |, - 로 table 만듦)
 
     - |     |    x  |    y  |
       | --- | ------| ----- |
