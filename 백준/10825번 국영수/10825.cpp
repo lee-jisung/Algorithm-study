@@ -41,7 +41,6 @@ int main(void) {
 		temp.korean = k;
 		temp.english = e;
 		temp.math = m;
-
 		s.push_back(temp);
 	}
 
