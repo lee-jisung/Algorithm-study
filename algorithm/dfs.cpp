@@ -8,7 +8,6 @@ vector<int> graph[10];
 bool check[10];
 
 void dfs(int x) {
-
 	check[x] = true;
 	cout << x << "\n";
 	for (int i = 0; i < graph[x].size(); i++) {
@@ -17,7 +16,6 @@ void dfs(int x) {
 			dfs(y);
 		}
 	}
-
 }
 
 int main(void) {
@@ -42,8 +40,5 @@ int main(void) {
 	graph[4].push_back(8);
 	graph[8].push_back(4);
 
-
 	dfs(1);
-
-
 }
