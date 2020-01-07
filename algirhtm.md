@@ -10,3 +10,18 @@
   return a < b // 증가하는 순 (오름차순)
  }
 ```
+
+
+# string header
+
+### to_string
+```
+ int n = 10;
+ string str = to_string(n);
+ ```
+
+### stoi
+```
+ string str = "1000";
+ int n = stoi(str);
+ ```
