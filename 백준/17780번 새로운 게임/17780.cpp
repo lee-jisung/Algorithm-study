@@ -115,7 +115,10 @@ int main(void) {
 					red(nr, nc, move);
 				}
 			}
-
+			
+			// 매 턴마다 모든 object 말들의 위치를 확인하면서
+			// 4개가 쌓여있는지 확인
+			// 이것때문에 계속 틀렷음
 			for (int i = 1; i <= k; i++) {
 				if (chess[ob[i].r][ob[i].c].size() >= 4) {
 					cout << t << "\n";
