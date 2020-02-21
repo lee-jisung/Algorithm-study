@@ -82,7 +82,7 @@ int main(void) {
 
 			int rr = r.r, rc = r.c;
 			int br = b.r, bc = b.c;
-
+			
 			// red, blue를 '#' 이거나 'O'가 나올 때 까지 이동
 			while (1) {
 				if (map[rr + dx[i]][rc + dy[i]] == '#' || map[rr][rc] == 'O') break;
@@ -100,16 +100,17 @@ int main(void) {
 			if (map[br][bc] == 'O') continue;
 
 			// red, blue의 위치가 같을 경우 기존 위치에 따라 더 많이 움직인 쪽을 한칸씩 이동시켜줌
+			// 0: r -1 / 1: r + 1 / 2: c - 1 / 3: c + 1
 			if (rr == br && rc == bc) {
 				switch (i) {
 				case 0:
 					r.r > b.r ? rr++ : br++; break;
 				case 1:
-					r.r > b.r ? rr-- : br--; break;
+					r.r > b.r ? br-- : rr--; break;
 				case 2:
 					r.c > b.c ? rc++ : bc++; break;
 				case 3:
-					r.c > b.c ? rc-- : bc--; break;
+					r.c > b.c ? bc-- : rc--; break;
 				}
 			}
 			
