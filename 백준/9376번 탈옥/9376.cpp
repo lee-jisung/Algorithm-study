@@ -37,6 +37,12 @@ bool isRange(int r, int c) {
 	return r >= 0 && c >= 0 && r <= n + 1 && c <= m + 1;
 }
 
+
+// BFS에서 Deque 사용
+// #을 연 경우를 deque의 뒤쪽으로 보내서
+// 가중치가 적은 경우를 먼저 모두 다 처리 한 후에
+// 그다음에 +1인 경우를 모두 싹 처리하게 하는 것
+// 즉, 문을 1개 연 경우 갈 수 있는 곳 모두 처리 --> 2개 연 경우 싹 처리의 단계로 볼 수 있음
 void bfs(int r, int c, int no) {
 
 	deque<node> dq;
