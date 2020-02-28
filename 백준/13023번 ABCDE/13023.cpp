@@ -32,10 +32,10 @@ void dfs(int vertex, int depth) {
 		int x = v[vertex][i];
 		if (!isVisit[x])
 			dfs(x, depth + 1);
-		if (ck) return;
+		if (ck) return; // 없으면 시간 초과
 
 	}
-	isVisit[vertex] = false;
+	isVisit[vertex] = false; // 없으면 틀림
 }
 
 int main(void) {
