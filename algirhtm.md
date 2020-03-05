@@ -11,6 +11,11 @@
  }
 ```
 
+- greater<int>() 사용하여 오름차순 정리
+ ```
+   sort(v.begin(), v.end(), greater<int>());
+ ```
+
 
 # string header
 
