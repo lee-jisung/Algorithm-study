@@ -51,7 +51,6 @@ void bfs(int r, int c) {
 int main(void) {
 
 	cin >> R >> C;
-
 	for (int i = 0; i < R; i++) {
 		for (int j = 0; j < C; j++) {
 			scanf(" %1c", &map[i][j]);
