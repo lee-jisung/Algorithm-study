@@ -26,9 +26,8 @@ int dp[2][SIZE], card[2][SIZE];
 
    ==> dp[0][n] = max(dp[1][n-1], dp[1][n-2]) +arr[0][n]
 
-   --> 단 구현은 반대로 --> dp[0][i] = max(dp[1][i-1], dp[1][i-2]) + arr[0][i]
-                            dp[1][i] = max(dp[0][i-1], dp[0][i-2]) = arr[1][i]
-  
+   --> 구현 --> dp[0][i] = max(dp[1][i-1], dp[1][i-2]) + arr[0][i]
+                dp[1][i] = max(dp[0][i-1], dp[0][i-2]) = arr[1][i]
 */
 
 int main(void) {
