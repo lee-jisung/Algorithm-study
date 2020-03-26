@@ -28,19 +28,21 @@ int main(void) {
 	res = INF;
 	sum = a[0];
 
-	while (front < n && rear < n) {
+	while (front <= rear && rear < n) {
 
 		if (sum < s) {
-			rear++;
-			sum += a[rear];
-			continue;
+			sum += a[++rear];
 		}
-		if (sum >= s) {
+		else if (sum == s) {
 			res = min(res, (rear - front) + 1);
-			sum -= a[front];
-			front++;
+			sum += a[++rear];
+		}
+		else if (sum > s) {
+			res = min(res, (rear - front) + 1);
+			sum -= a[front++];
 		}
 	}
+	
 	if (res == INF) cout << 0 << "\n";
 	else cout << res << "\n";
 
