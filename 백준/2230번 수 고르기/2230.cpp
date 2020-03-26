@@ -15,6 +15,11 @@ using namespace std;
 int n, m, result, x, y; 
 vector<int> a;
 
+/*
+   배열 -> pointer를 2개 두고 각 구간을 설정해서 조건에 맞으면 앞 포인터를 한칸 뒤로 움직이고
+           조건에 부합하지 않을 경우 뒤 포인터를 한칸씩 뒤로 움직이면서 조건 확인
+*/
+
 int main(void) {
 
 	cin.tie(NULL);
