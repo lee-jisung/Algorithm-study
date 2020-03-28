@@ -28,7 +28,7 @@ int parent[SIZE];
 // 부모 노드를 찾는 함수
 int getParent(int x) {
     if (parent[x] == x) return x;
-    return parent[x] = getParent(parent[x]);
+    return parent[x] = getParent(parent[x]); // << 여기서 parent[x]의 값을 매번 가장 최소의 root로 갱신시켜줌
 }
 
 // 두 노드를 합치는 함수 (가장 작은 수를 부모노드로 갖음)
