@@ -19,7 +19,6 @@ string order;
 bool success = true;
 
 pair<int, int> jong;
-
 int dr[9] = { 1, 1, 1, 0, 0, 0, -1, -1 ,-1 }, dc[9] = { -1, 0, 1, -1, 0, 1, -1, 0, 1 };
 
 void print() {
