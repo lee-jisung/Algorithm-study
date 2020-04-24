@@ -15,6 +15,8 @@ using namespace std;
 
 /*
 	l개 --> 최소 1개 모음 (a,e,i,o,u) + 최소 2개의 자음, 사전식 정렬 ex) abc (0), bac (x)
+
+	-> backtracking함수에서 n과m 문제처럼 isVisit을 사용하면 시간초과 발생
 */
 
 int l, c;
@@ -45,7 +47,6 @@ void backtracking(int a, int b) {
 		cout << "\n";
 		return;
 	}
-
 	for (int i = a; i < c; i++) {
 		res[b] = word[i];
 		backtracking(i + 1, b + 1);
