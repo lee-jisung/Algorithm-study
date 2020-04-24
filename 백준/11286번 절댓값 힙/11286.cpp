@@ -14,7 +14,6 @@
 using namespace std;
 
 int n, m; 
-
 priority_queue<pair<int, int>, vector<pair<int,int>>, greater<pair<int,int>> >pq;
 
 int main(void) {
