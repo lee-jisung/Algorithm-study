@@ -15,12 +15,10 @@ using namespace std;
 
 /*
 	l개 --> 최소 1개 모음 (a,e,i,o,u) + 최소 2개의 자음, 사전식 정렬 ex) abc (0), bac (x)
-
 */
 
 int l, c;
 char word[16], res[16];
-bool isVisit[16];
 
 bool isAEIOU() {
 	int vow = 0, con = 0;
