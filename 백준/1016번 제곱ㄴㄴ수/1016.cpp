@@ -19,8 +19,8 @@ using namespace std;
    전체 수의 개수에서 찾은 제곱근 배수 들의 수를 뺌
 */
 
-long long min_val, max_val, arr[SIZE], cnt;
-bool ck[SIZE];
+long long min_val, max_val, arr[SIZE], sqCnt;
+bool visit[SIZE];
 
 int main(void) {
 
@@ -28,34 +28,33 @@ int main(void) {
 	cin.tie(0);
 
 	cin >> min_val >> max_val;
+	int result = max_val - min_val + 1;
 
-	long long sq_max_val = (long long)sqrt(max_val);
-	
-	// 2 ~ 제곱근의 최대값 사이의 제곱 수를 찾음
-	for (long long i = 2; i <= sq_max_val; i++) {
-		arr[i] = i * i;
-		cnt++;
+	long long sq = (long long)sqrt(max_val); // min ~ max 중 제곱 수의 최대값 찾기
+
+	// 2 ~ 제곱수의 최대값 까지 arr에 각 i의 제곱수를 저장
+	for (long long i = 2; i <= sq; i++) { 
+		arr[i] = (i * i);
+		sqCnt++; // 제곱 수 count
 	}
 
-	int count = 0; // min_val ~ max_val 사이 -> 제곱 수로 나누어 떨어지는 수
+	// 제곱수 개수만큼 min ~ max사이의 숫자에서 빼줄 숫자 찾기
+	for (int i = 2; i < sqCnt + 2; i++) {
 
-	for (int i = 2; i < cnt + 2; i++) { // 제곱 개수만큼 for문 
-
-		long long temp = min_val;
-		if (temp % arr[i] != 0) { // -> temp가 arr[i](제곱수) 로 나누어 떨어지지 않으면
-			temp = (min_val / arr[i] + 1) * arr[i];// -> min값을 arr[i](제곱수)로 나눈 몫에 +1 후 arr[i]를 다시 곱해서 범위 안 값으로 만듦
+		long long div = min_val; 
+		if (div % arr[i] != 0) { // i번째 제곱수인 arr[i]로 min_val가 안나눠지면 min_val보다 큰 arr[i]의 배수를 만들어줌
+			div = (min_val / arr[i] + 1) * arr[i]; // min_val 보다 큰 arr[i]의 배수 만들기
 		}
-
-		// 제곱 수의 배수를 모두 count하고, ck 배열로 방문처리 해주어 중복 제거 
-		for (long long div = temp; div <= max_val; div += arr[i]) { 
-			if (!ck[div - min_val]) {
-				ck[div - min_val] = true;
-				count++;
+		// min ~ max 사이의 arr[i]인 제곱수로 나누어떨어지는 수들을 모두 제거
+		for (long long j = div; j <= max_val; j += arr[i]) {
+			if (!visit[j - min_val]) {
+				visit[j - min_val] = true;
+				result--;
 			}
 		}
 	}
 
-	cout << max_val - min_val + 1 - count;
+	cout << result << "\n";
 
 	return 0;
 }
