@@ -28,6 +28,18 @@ using namespace std;
   그리고 각 섬마다 자신이 포함하고 있는 섬의 번호를 추가하여 관리
   ->포함하는 자식이 없는 섬의 높이는 0, 
   -> 포함하는 자식이 있는 경우 그 자식들의 높이 중 가장 높은 자식 섬의 높이 + 1 이 부모 섬의 높이
+  
+  testcase
+  9 13
+xxx.x...xxxxx
+xxxx....x...x
+........x.x.x
+..xxxxx.x...x
+..x...x.xxx.x
+..x.x.x...x..
+..x...x...xxx
+...xxxxxx....
+x............
 */
 
 int n, m, island_cnt; 
