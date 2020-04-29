@@ -60,6 +60,49 @@ ACAYKP의 단어에서 C를 이용해서 테이블을 채운다면 위와 같다
 
 최종 LCS 과정을 거친 후의 테이블이며, 마지막 요소인 4가 LCS 값임.
 
+
+## Code
+
+``` c++
+#include <iostream>
+#include <string>
+
+#define SIZE 1001
+
+using namespace std;
+
+int lcs[SIZE][SIZE];
+
+string a, b;
+string str1, str2;
+
+int main(void) {
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> a >> b;
+	str1 = '0' + a; // 첫 행,열을 0으로 하기 위해서 앞에 0을 붙여줌
+	str2 = '0' + b;
+
+	for (int i = 1; i < str1.length(); i++) {
+		for (int j = 1; j < str2.length(); j++) {
+			if (str1[i] == str2[j]) { //문자가 같다면 대각선 값 + 1
+				lcs[i][j] = lcs[i - 1][j - 1] + 1;
+			}
+			else { // 다르다면 왼쪽/위쪽 중 큰값
+				lcs[i][j] = max(lcs[i][j - 1], lcs[i - 1][j]);
+			}
+		}
+	}
+
+	cout << lcs[str1.length()-1][str2.length()-1];
+	return 0;
+}
+
+```
+
+
 ## LCS Implement, 실제 단어 찾기
 
 ![image](https://user-images.githubusercontent.com/32594290/80604635-f1706f00-8a6c-11ea-9e0d-ef8ff9aee565.png)
