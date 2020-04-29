@@ -59,3 +59,11 @@ ACAYKP의 단어에서 C를 이용해서 테이블을 채운다면 위와 같다
 ![image](https://user-images.githubusercontent.com/32594290/80602716-67270b80-8a6a-11ea-967c-2793ee21b049.png)
 
 최종 LCS 과정을 거친 후의 테이블이며, 마지막 요소인 4가 LCS 값임.
+
+## LCS Implement, 실제 단어 찾기
+
+![image](https://user-images.githubusercontent.com/32594290/80604635-f1706f00-8a6c-11ea-9e0d-ef8ff9aee565.png)
+
+가장 끝 자리부터 시작해서 자신과 같은 숫자가 있는 곳으로 따라감.
+만약, 왼쪽 위쪽에 자신과 같은 수가 없다면 왼쪽 위(대각선)방향의 값이 현재 (자신의 값 - 1)인지 확인하고 그 수를 따라감
+수가 0이 되면 종료
