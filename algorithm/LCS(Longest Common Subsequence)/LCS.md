@@ -110,3 +110,70 @@ int main(void) {
 가장 끝 자리부터 시작해서 자신과 같은 숫자가 있는 곳으로 따라감.
 만약, 왼쪽 위쪽에 자신과 같은 수가 없다면 왼쪽 위(대각선)방향의 값이 현재 (자신의 값 - 1)인지 확인하고 그 수를 따라감
 수가 0이 되면 종료
+
+** 대각선으로 이동하게 되는 경우에 현재 문자열을 담고, 대각선으로 이동 ** 
+왼쪽, 위쪽으로 이동할때는 문자열을 담지 않음.
+
+
+## Code, LCS
+
+``` c++
+
+#include <iostream>
+#include <string>
+#include <stack>
+
+#define SIZE 1001
+
+using namespace std;
+
+int lcs[SIZE][SIZE];
+
+string a, b;
+string str1, str2;
+stack<char> st;
+int r, c;
+
+int main(void) {
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> a >> b;
+	str1 = '0' + a;
+	str2 = '0' + b;
+
+	for (int i = 1; i < str1.length(); i++) {
+		for (int j = 1; j < str2.length(); j++) {
+			if (str1[i] == str2[j]) {
+				lcs[i][j] = lcs[i - 1][j - 1] + 1;
+			}
+			else {
+				lcs[i][j] = max(lcs[i][j - 1], lcs[i - 1][j]);
+			}
+		}
+	}
+
+	r = str1.length() - 1; c = str2.length() - 1;
+	while (lcs[r][c] != 0) {
+
+		if (lcs[r][c] == lcs[r][c - 1])
+			c--;
+
+		else if (lcs[r][c] == lcs[r - 1][c])
+			r--;
+		else if (lcs[r][c] - 1 == lcs[r - 1][c - 1]) {
+			st.push(str1[r]);
+			r--, c--;
+		}	
+	}
+
+	cout << lcs[str1.length() - 1][str2.length() - 1] << "\n";
+	while (!st.empty()) {
+		cout << st.top();
+		st.pop();
+	}
+	return 0;
+}
+
+```
