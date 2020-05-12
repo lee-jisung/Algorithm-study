@@ -47,3 +47,17 @@
  string str = "1000";
  int n = stoi(str);
  ```
+
+### getline()
+
+ - 입력 ex) Hello my friend
+ - cin >> str 으로 받을 경우 hello 까지만 받아짐
+ - getline을 이용할 경우 한줄이 모두 받아짐 (단, 끝에 '\n'까지 str에 저장이 된다)
+
+```
+  string str;
+  getline(cin, str);
+```
+  
+  
+  
