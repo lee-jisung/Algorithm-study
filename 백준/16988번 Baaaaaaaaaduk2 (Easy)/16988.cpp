@@ -15,13 +15,11 @@ using namespace std;
    개수를 0으로 return해주고, 없다면 2의 개수를 return해줌
 
    각각의 경우의 수 마다 개수를 구해서 최대 갯수를 출력
-
 */
 
 int n, m, result;
 int board[SIZE][SIZE], temp[SIZE][SIZE];
-int sel[SIZE * SIZE];
-bool isVisit[SIZE][SIZE];
+bool isVisit[SIZE][SIZE], sel[SIZE * SIZE];
 
 int dr[4] = { -1, 1, 0, 0 }, dc[4] = { 0, 0, -1, 1 };
 
