@@ -118,7 +118,7 @@ int main(void) {
 			if (idx > R) break;
 			if (!board[idx][i].empty()) {
 				shark s = board[idx][i].back();
-				board[idx][i].pop_ㅁback();
+				board[idx][i].pop_back();
 				result += s.z;
 				break;
 			}
