@@ -67,3 +67,28 @@ for(iter = m.begin(); iter != m.end(); iter++){
 }
  
   
+
+```
+
+// map<pair<비교 수, 횟수>, bool> 로 초기화 한 후
+// 방문 처리를 할 수 있음 
+// 방문처리를 위한 배열이 너무 클 경우에 
+map<pair<long long, int>, bool> isVisit;
+
+void dfs(long long sum, int no) {
+
+	string tmp = to_string(sum);
+	if (tmp.length() > D || isVisit[{sum, no}]) return;
+
+	isVisit[{sum, no}] = true;
+
+	if (no == P) {
+		result = max(result, sum);
+		return;
+	}
+
+	for (int i = 2; i <= 9; i++) {
+		dfs(sum * i, no + 1);
+	}
+}
+```
