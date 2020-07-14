@@ -48,7 +48,7 @@ int main(void) {
 			int t = q.front().second; // 현재 까지 건물을 지은 시간
 			q.pop();
 			int newTime = build[building] + t;
-			// 이전에 새로 짓는 건물이 걸리는 시간 보다 더 긴 시간이 걸리는 경우가 있으면 갱신
+			// 이전 건물을 짓는데 걸리는 시간보다 현재 짓는 시간이 더 오래 걸린다면 갱신
 			if (time[building] < newTime) time[building] = newTime;
 
 			for (int j = 0; j < graph[building].size(); j++) {
