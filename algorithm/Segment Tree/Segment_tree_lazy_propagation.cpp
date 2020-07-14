@@ -9,7 +9,7 @@ vector<long long> arr, tree, lazy;
 
 long long init(int node, int st, int ed) {
 	if (st == ed) return tree[node] = arr[st];
-	else return tree[node] = init(node * 2, st, (st + ed) / 2) + init(node * 2 + 1, (st + ed) / 2, ed);
+	else return tree[node] = init(node * 2, st, (st + ed) / 2) + init(node * 2 + 1, (st + ed) / 2 + 1, ed);
 }
 
 void update_lazy(int node, int st, int ed) {
