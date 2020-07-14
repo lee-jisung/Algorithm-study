@@ -35,7 +35,7 @@ void update_range(int node, int st, int ed, int left, int right, long long diff)
 		return;
 	}
 	update_range(node * 2, st, (st + ed) / 2, left, right, diff);
-	update_range(node * 2 + 1, (st + ed) / 2, ed, left, right, diff);
+	update_range(node * 2 + 1, (st + ed) / 2 + 1, ed, left, right, diff);
 	tree[node] = tree[node * 2] + tree[node * 2 + 1];
 }
 
@@ -44,7 +44,7 @@ long long sum(int node, int st, int ed, int left, int right) {
 	if (left > ed || right < st) return 0;
 	if (left <= st && ed <= right)
 		return tree[node];
-	return sum(node * 2, st, (st + ed) / 2, left, right) + sum(node * 2 + 1, (st + ed) / 2, ed, left, right);
+	return sum(node * 2, st, (st + ed) / 2, left, right) + sum(node * 2 + 1, (st + ed) / 2 + 1, ed, left, right);
 }
 
 int main(void) {
