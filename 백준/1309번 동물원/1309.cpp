@@ -22,7 +22,7 @@ int dp[100001][3];
 	 3 => N번째 줄 오른쪽 칸에만 사자가 있는 경우
 	      => N-1번째 줄에 사자 왼쪽 or 미배치 가능
           => dp[n][2] = dp[n-1][0] + dp[n-1][1];
-   
+  
  */
 
 int main(void) {
@@ -31,6 +31,14 @@ int main(void) {
 	cin.tie(0);
 
 	cin >> n;
+
+	/*dp[0] = 1;
+	dp[1] = 3;
+
+	for (int i = 2; i <= n; i++) {
+		dp[i] = (dp[i - 2] + dp[i - 1] * 2) % MOD;
+	}
+	cout << dp[n] % MOD << "\n";*/
 
 	dp[1][0] = 1; dp[1][1] = 1; dp[1][2] = 1;
 
