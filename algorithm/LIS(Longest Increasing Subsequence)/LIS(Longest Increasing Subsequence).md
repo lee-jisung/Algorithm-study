@@ -144,4 +144,20 @@ int main(void) {
 
 ```
 
-https://www.crocus.co.kr/681
+실제 lis 배열을 구하는 알고리즘 예시 
+
+1 6 2 5 7 3 5 6인 경우
+res배열에는 다음과 같이 들어간다.
+
+ > first  ::  0 1 1 2 3 2 3 4
+ 
+ > second ::  1 6 2 5 7 3 5 6
+
+이 값을 first를 기준으로 뒤에서 부터 조사해오면
+first가 4일때 (6) - > first가 3일때 (5) -> first가 2일때 (3)
+-> first가 1일때 (2) -> first가 0일때(1)이다.
+
+이것을 스택에 담아 역출력하면 1,2,3,5,6이라는 실제 배열을 구할 수 있다.
+
+출처: https://www.crocus.co.kr/681 [Crocus]
+
