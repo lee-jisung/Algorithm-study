@@ -84,4 +84,64 @@ lower_bound()를 이용하여 LIS를 구할 경우 vector에 들어간 수열이
 위의 알고리즘을 적용하면 답은 1, 2, 4가 나오지만 실제 배열상 부분 증가 수열은 1, 3, 4여야 함
 따라서 증가하는 최장 부분 수열을 구하기 위한 다른 알고리즘을 적용해야 함.
 
+```
+// BOJ 14002
+
+#include <iostream>
+#include <algorithm>
+#include <stack>
+
+using namespace std;
+
+int n, cnt;
+int arr[100001], cache[100001];
+pair<int, int> res[100001];
+stack<int> s;
+
+int main(void) {
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cin >> n;
+
+	for (int i = 0; i < n; i++) cin >> arr[i];
+
+	int idx = 0;
+	cache[idx] = arr[0];
+	res[0] = { 0, arr[0] };
+
+	for (int i = 1; i < n; i++) {
+		if (cache[idx] < arr[i]) {
+			cache[++idx] = arr[i];
+			res[i] = { idx, arr[i] };
+		}
+		else {
+			int idx2 = lower_bound(cache, cache + idx, arr[i]) - cache;
+			cache[idx2] = arr[i];
+			res[i] = { idx2, arr[i] };
+		}
+	}
+
+	cnt = idx + 1;
+	cout << cnt << "\n";
+
+	int num = cnt - 1;
+	for (int i = n - 1; i >= 0; i--) {
+		if (res[i].first == num) {
+			s.push(res[i].second);
+			num--;
+		}
+	}
+	while (!s.empty()) {
+		cout << s.top() << " ";
+		s.pop();
+	}
+	cout << "\n";
+
+
+	return 0;
+}
+
+```
+
 https://www.crocus.co.kr/681
