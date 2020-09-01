@@ -3,9 +3,13 @@
 using namespace std;
 
 /*
-   dp[k][n] => 정수 k개를 더해서 n이 되는 경우의 수 저장
+   0 ~ n까지 정수 k개를 사용해서 n 만들기
+   1개 사용 => n 인 수
 
-   dp[K][N] = dp[k-1][0] + dp[k-1][1] + ... + dp[k-1][N];
+   n=2, k=2일 때, 
+   (0,2), (1, 1), (2,0) 으로 3개
+
+   dp[k][n] = dp[k-1][0] + d[k-1][1] + ... + dp[k-1][n];
 */
 
 const int MOD = 1e9;
@@ -19,9 +23,9 @@ int main(void) {
 	cin.tie(0);
 
 	cin >> N >> K;
-	for (int i = 0; i <= 200; i++) {
+
+	for (int i = 0; i < 201; i++)
 		dp[1][i] = 1;
-	}
 
 	for (int k = 2; k <= K; k++) {
 		for (int n = 0; n <= N; n++) {
