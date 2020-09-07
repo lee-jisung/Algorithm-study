@@ -1,0 +1,84 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int r, c;
+char boards[31][31];
+bool isBreak[31][31];
+
+void init() {
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            isBreak[i][j] = false;
+}
+
+bool findBlock() {
+    bool ck = false;
+    for (int i = 0; i < r-1; i++) {
+        for (int j = 0;j < c-1; j++) {
+            if (boards[i][j] == ' ') continue;
+            if (boards[i][j] == boards[i][j + 1] && boards[i][j] == boards[i + 1][j] && boards[i][j] == boards[i + 1][j + 1]) {
+                isBreak[i][j] = isBreak[i][j + 1] = isBreak[i + 1][j] = isBreak[i + 1][j + 1] = true;
+                ck = true;
+            }
+        }
+    }
+    return ck;
+}
+
+void downBlock() {
+    for (int j = 0; j < c; j++) {
+        queue<char> q;
+        for (int i = r - 1; i >= 0; i--) {
+            if (boards[i][j] != ' ') {
+                q.push(boards[i][j]);
+                boards[i][j] = ' ';
+            }
+        }
+        int idx = r - 1;
+        while (!q.empty()) {
+            boards[idx--][j] = q.front();
+            q.pop();
+        }
+    }
+}
+
+
+int solution(int m, int n, vector<string> board) {
+    int answer = 0;
+    r = m; c = n;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            boards[i][j] = board[i][j];
+        }
+    }
+
+    while (findBlock()) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (isBreak[i][j]) boards[i][j] = ' ';
+            }
+        }
+        downBlock();
+        init();
+    }
+
+    for (int i = 0; i < r; i++)
+        for (int j= 0; j < c; j++)
+            if (boards[i][j] == ' ') answer++;
+
+    return answer;
+}
+
+int main(void) {
+
+    vector<string> v = {
+        "CCBDE", "AAADE", "AAABF", "CCBBF"
+    };
+    solution(4, 5, v);
+
+    return 0;
+}
