@@ -1,21 +1,21 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
 int n, k, result;
+string word[50];
 bool isUsed[26];
-string words[50];
-vector<char> pre = { 'a', 'c', 't', 'n', 'i' };
+char pre[5] = { 'a', 'c', 'i','n', 't' };
 
-void findWords(int cur, int cnt) {
+void findWord(int idx, int cnt) {
 	if (cnt == k - 5) {
+
 		int num = 0;
 		for (int i = 0; i < n; i++) {
 			bool ck = true;
-			for (int j = 0; j < words[i].length(); j++) {
-				if (!isUsed[words[i][j] - 'a']) {
+			for (int j = 0; j < word[i].length(); j++) {
+				if (!isUsed[word[i][j] - 'a']) {
 					ck = false;
 					break;
 				}
@@ -26,10 +26,10 @@ void findWords(int cur, int cnt) {
 		return;
 	}
 
-	for (int i = cur; i < 26; i++) {
+	for (int i = idx; i < 26; i++) {
 		if (isUsed[i]) continue;
 		isUsed[i] = true;
-		findWords(i, cnt + 1);
+		findWord(i, cnt + 1);
 		isUsed[i] = false;
 	}
 }
@@ -40,23 +40,22 @@ int main(void) {
 
 	cin >> n >> k;
 	if (k < 5) {
-		cout << 0 << "\n";return 0;
+		cout << 0 << "\n";
+		return 0;
 	}
-	if (k == 26) {
+	else if (k == 26) {
 		cout << n << "\n";
 		return 0;
 	}
 
-	for (int i = 0; i < 5; i++)
-		isUsed[pre[i] - 'a'] = true;
-
 	for (int i = 0; i < n; i++) {
-		cin >> words[i];
-		words[i] = words[i].substr(4);
-		words[i] = words[i].substr(0, words[i].length() - 4);
+		cin >> word[i];
+		word[i] = word[i].substr(4);
+		word[i] = word[i].substr(0, word[i].length() - 4);
 	}
 
-	findWords(0, 0);
+	for (int i = 0; i < 5; i++) isUsed[pre[i] - 'a'] = true;
+	findWord(0, 0);
 
 	cout << result << "\n";
 
