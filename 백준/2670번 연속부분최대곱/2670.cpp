@@ -5,6 +5,10 @@
 
 using namespace std;
 
+/*
+   곱을 누적 => 누적할 때 곱 결과가 자신보다 크다면 누적하는 형태로 진행 (음수가 없기 때문에 가능)
+*/
+
 int n; 
 double arr[10001], result;
 
