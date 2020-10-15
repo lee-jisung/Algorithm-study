@@ -68,6 +68,8 @@ int main(void) {
 			}
 		}
 
+		// 모두가 장애물로만 이루어진 경우는 없기 때문에
+		// 빈칸이 1개인 경우 이동 횟수가 0번
 		if (emptySpace == 1) {
 			cout << "Case " << ++tc << ": 0\n";
 			continue;
@@ -77,6 +79,7 @@ int main(void) {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				if (board[i][j] == '*') continue;
+				// 장애물 아닌 빈칸에 놓고, 4방향 정해서 탐색
 				for (int k = 0; k < 4; k++) {
 					isVisit[i][j] = true;
 					dfs(i, j, k, 1, 1);
