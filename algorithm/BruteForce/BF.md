@@ -25,3 +25,25 @@
 ``` 
      
         
+### 배열의 부분 수열의 합을 구하기
+
+ - ex) int arr[] = {5, 1, 2, 4}; (n = 4)
+ - recursive에서 index를 한개씩 증가시키면서 더하거나 더하지 않는 2가지로 나눠서 구할 수 있음
+ - makeSum(0, 0)부터 시작해야함 -> 5, 1, 2, 4 로 한개씩 더하는 경우도 구해야하기 때문에 0에서 시작하면됨
+
+```
+bool numbers[10000];
+
+void makeSum(int idx, int sum) {
+	if (idx == n) {
+		if (maxVal < sum) maxVal = sum;
+		numbers[sum] = true;
+		st.insert(sum);
+		return;
+	}
+	makeSum(idx + 1, sum + arr[idx]);
+	makeSum(idx + 1, sum);
+}
+
+
+```
