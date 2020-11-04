@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+#define INF 1e9
+
+using namespace std;
+
+/*
+   기름값이 가장 적은 주유소에서 남은 도시의 길이만큼 기름을 전부 다사면됨
+*/
+
+int n, cost;
+long long totalCost, dist[100001];
+
+int main(void) {
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n;
+	for (int i = 0; i < n - 1; i++) {
+		cin >> dist[i];
+	}
+	cost = INF;
+	for (int i = 0; i < n; i++) {
+		int ct; cin >> ct;
+		if (i < n - 1) {
+			cost = min(cost, ct);
+			totalCost += cost * dist[i];
+		}
+	}
+
+	cout << totalCost;
+
+	return 0;
+}
