@@ -22,7 +22,7 @@ long long init(vector<long long>& a, vector<long long>& tree, int node, int st, 
 	if (st == end) // node가 leaf인 경우
 		return tree[node] = a[st];
 	else // node의 왼쪽자식 + 오른쪽 자식의 합을 구해서 해당 node에 저장
-		return tree[node] = init(a, tree, node * 2, st, (st + end) / 2) + init(a, tree, node * 2 + 1, (st + end) / 2, end);
+		return tree[node] = init(a, tree, node * 2, st, (st + end) / 2) + init(a, tree, node * 2 + 1, (st + end) / 2 + 1, end);
 }
 
 // left ~ right 까지의 구간 합 구하기
@@ -37,7 +37,7 @@ long long sum(vector<long long>& tree, int node, int st, int end, int left, int 
 		return tree[node];
 	}
 	// st, end가 left, right을 포함하거나 left, right과 st, end가 겹치는 경우 --> 재 탐색
-	return sum(tree, node * 2, st, (st + end) / 2, left, right) + sum(tree, node * 2 + 1, (st + end) / 2, end, left, right);
+	return sum(tree, node * 2, st, (st + end) / 2, left, right) + sum(tree, node * 2 + 1, (st + end) / 2 + 1, end, left, right);
 }
 
 // index번째 수 변경하기 --> 수를 변경하면 그 상위 노드들의 합이 모두 변경됨
@@ -46,7 +46,7 @@ void update(vector<long long>& tree, int node, int st, int end, int index, long 
 	tree[node] = tree[node] + diff; // 변경된 수의 합 (+든 -든) 더해줌
 	if (st != end) {
 		update(tree, node * 2, st, (st + end) / 2, index, diff);
-		update(tree, node * 2 + 1, (st + end) / 2, end, index, diff);
+		update(tree, node * 2 + 1, (st + end) / 2 + 1, end, index, diff);
 	}
 }
 
