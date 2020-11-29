@@ -1,0 +1,33 @@
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+/*
+   map으로하면 insert와 동시에 sorting이 이루어지기 때문에 시간초과 발생
+   unordered_map을 이용
+*/
+
+long long n, p, q, x, y;
+unordered_map<long long, long long> val;
+
+long long infiniteSeq(long long n) {
+	if (n <= 0) return 1;
+	if (val.find(n) != val.end()) return val[n];
+
+	return val[n] = infiniteSeq(n / p - x) + infiniteSeq(n / q - y);
+}
+
+int main(void) {
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> n >> p >> q >> x >> y;
+
+	val[0] = 1;
+
+	cout << infiniteSeq(n);
+
+	return 0;
+}
